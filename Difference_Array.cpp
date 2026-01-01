@@ -22,4 +22,16 @@ int32_t main()
 	}
 	cout << endl;
 	return 0;
+
 }
+/*
+Input :
+5
+3
+1 2
+1 4
+2 3
+
+Output :
+2 3 2 1 0 
+*/
