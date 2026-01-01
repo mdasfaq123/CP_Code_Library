@@ -6,25 +6,24 @@ int32_t main()
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
-	int n;
-	cin >> n;
-	vector < int > v(n + 1);
+	int n, x; cin >> n >> x;
+	vector < int > v(n+1), p(n+1);
 	for(int i = 1; i <= n; i++)
 	{
 		cin >> v[i];
 	}
-	vector < int > pre_sum(n + 1);
 	for(int i = 1; i <= n; i++)
 	{
-		pre_sum[i] = pre_sum[i - 1] + v[i];
+		p[i] = p[i-1] + v[i];
 	}
-	int ans = LLONG_MIN, mn = 0;
+	int ans = 0;
+	map < int, int > m;
+	m[p[0]]++;
 	for(int r = 1; r <= n; r++)
 	{
-		int add = pre_sum[r];
-		int sub = mn;
-		ans = max(ans, add - sub);
-		mn = min(mn, pre_sum[r]);
+		int val = p[r] - x;
+		ans += m[val];
+		m[p[r]]++;
 	}
 	cout << ans << endl;
 	return 0;
